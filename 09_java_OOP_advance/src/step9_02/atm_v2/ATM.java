@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class ATM {
 	
+	/*
+	 * 회원가입 , 로그인 , 종료 기능
+	 * >>유저 매니저를 통해 구현
+	 * 
+	 */
+	
 	Scanner scan = new Scanner(System.in);
 	int identifier = -1;
 	UserManager um = UserManager.getInstance(); // 유저매니저의 객체를 받는다.

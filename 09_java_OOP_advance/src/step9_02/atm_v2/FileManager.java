@@ -20,6 +20,7 @@ public class FileManager {
 	
 	void setData() {
 		
+		// 데이터 넣기
 		data = "";
 		int userCount = um.userCnt;
 		data += userCount;
@@ -56,11 +57,11 @@ public class FileManager {
 		
 		setData();
 		
-		FileWriter fw = null;
+		FileWriter fw = null; // 파일 만드는 객체
 		
 		try {
-			fw = new FileWriter(fileName);
-			fw.write(data);
+			fw = new FileWriter(fileName); //  file이름을 가지는 파일 만들기 
+			fw.write(data); // 파일에 데이터 입력
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -70,29 +71,34 @@ public class FileManager {
 	}
 	
 	
-	void load() {
+	void load() { // 파일 로드 (불러오기)
 		
-		File file = new File(fileName);
-		FileReader fr = null;
-		BufferedReader br = null;
+		File file = new File(fileName); // 파일 객체 생성
+		FileReader fr = null; 
+		BufferedReader br = null; 
 		
 		try {
 			
-			if (file.exists()) {
-				
-				fr = new FileReader(file);
-				br = new BufferedReader(fr);
+			// 왜 다시 넣지..???/
+			if (file.exists()) { // 파일이 존재하면 
+				 
+				fr = new FileReader(file); // 파일 리더 객체 생성
+				br = new BufferedReader(fr); // 파일의 텍스트 리더 객체 생성
 				while (true) {
-					String line = br.readLine();
-					if (line == null) {
+					String line = br.readLine(); // 한줄씩 읽기
+					if (line == null) { // 읽을 줄이 없으면 멈추기
 						break;
 					}
-					data += line;
-					data += "\n";
+					data += line; // 한 줄씩 데이터 저장
+					data += "\n"; 
 				}
 				
-				String[] tmp = data.split("\n");
-				um.userCnt = Integer.parseInt(tmp[0]);
+				String[] tmp = data.split("\n"); // 한줄마다 spilt 해주기
+				//temp[0] == um.userCnt
+				//temp[1] == um.userlist[i].id
+				//temp[2] == um.userlist[i].pw
+				//temp[3] == um.userlist[].accCnt
+				um.userCnt = Integer.parseInt(tmp[0]); // 
 				um.userList = new User[um.userCnt];
 				for (int i = 0; i < um.userCnt; i++) {
 					um.userList[i] = new User();
@@ -101,7 +107,7 @@ public class FileManager {
 				int j = 0;
 				for(int i = 1; i < tmp.length; i += 4) {
 					String id = tmp[i];
-					String pw = tmp[i+1];
+					String pw = tmp[i+1]; 
 					int accCnt = Integer.parseInt(tmp[i+2]);
 					um.userList[j].id = id;
 					um.userList[j].pw = pw;

@@ -4,6 +4,19 @@ import java.util.Scanner;
 
 public class ATM {
 	
+	/*
+	 * 
+	 * ATM 클래스는
+	 * 
+	 * 로그인 , 로그아웃 , 회원가입 , 회원탈퇴 , 종료
+	 * >> 모두 유저 매니저를 통해 구현됨.
+	 * 
+	 * 로그인 됐을 때 계좌메뉴 를 보여주는 기능
+	 * 계좌 생성 , 계좌 삭제 , 조회 , 로그아웃
+	 * >> 어카운트 매니저를 통해 구현됨
+	 * 
+	 */
+	
 	Scanner scan = new Scanner(System.in);
 	Random ran   = new Random();
 	UserManager userManager = new UserManager(); //유저 관리자 객체

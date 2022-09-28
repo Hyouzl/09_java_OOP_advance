@@ -14,6 +14,7 @@ public class AccountManager {
 	 * 
 	 */
 
+	//sigleton >> 객체 한개만 생성하기위해 private 생성자 생성 / private static  객체 생성/ 생성한 객체 반환 메서드
 	private AccountManager() {}
 	private static AccountManager instance = new AccountManager();
 	public static AccountManager getInstance() {
@@ -56,7 +57,7 @@ public class AccountManager {
 		}
 		else if (accCntByUser == 1) {
 			System.out.println("[메세지] '" + um.userList[identifier].acc[0].accNumber + "' 계좌가 삭제 되었습니다.");
-			um.userList[identifier].acc = null;
+			um.userList[identifier].acc = null; // 계좌 한개밖에 없으면 걍널처리
 			um.userList[identifier].accCnt--;
 		}
 		else {

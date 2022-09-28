@@ -32,9 +32,9 @@ public class UserManager {
 	User[] userList = null;				// 전체 회원정보
 	int userCnt = 0;					// 전체 회원 수
 	
-	void printAllUser() { 
+	void printAllUser() {  
 		
-		for (int i = 0; i < userCnt; i++) {
+		for (int i = 0; i < userCnt; i++) { // 아이디 비번, (계좌있으면) 계좌 정보 보여주기
 			System.out.print((i+1) + ".ID(" + userList[i].id + ")\tPW(" + userList[i].pw + ")\t");
 			if (userList[i].accCnt != 0) {
 				for (int j = 0; j < userList[i].accCnt; j++) {
@@ -70,7 +70,7 @@ public class UserManager {
 		System.out.print("[로그인]패스워드를 입력하세요 : ");
 		String pw = scan.next();
 		
-		for (int i = 0; i < UserManager.instance.userCnt; i++) {  // 왜 instance 생성 ..?
+		for (int i = 0; i < UserManager.instance.userCnt; i++) {  // 생성한 유저 객체를 통해서 정보 얻기
 			if (userList[i].id.equals(id) && userList[i].pw.equals(pw)) {
 				identifier = i;
 			}
@@ -96,6 +96,10 @@ public class UserManager {
 	
 	void joinMember() { 
 		
+		// 회원가입 할 아이디와 패스워드 를 입력받은 뒤 중복아이디체크 메서드를 이용해 중복아이디 체크
+		// 중복 되는게 없으면 멤버 추가
+		
+		
 		System.out.print("[회원가입]아이디를 입력하세요 : ");
 		String id = scan.next();
 		System.out.print("[회원가입]패스워드를 입력하세요 : ");
@@ -109,18 +113,18 @@ public class UserManager {
 		}
 		
 		if (userCnt == 0) {
-			userList = new User[userCnt + 1];
-			userList[userCnt] = new User(); 
+			userList = new User[userCnt + 1]; 
+			userList[userCnt] = new User(); // 가입된 유저가 없을 때는 그냥 유저 배열 추가 후 유저 배열에 유저 객체 넣기.
 		}
-		else {
+		else { // 가입된 유저가 있을 때는 원래 있던 유저 배열 임시저장후 사이즈추가한 유저 배열 생성 후 객체 넣어주기
 			User[] tmp = userList;
 			userList = new User[userCnt + 1];
 			userList[userCnt] = new User();
 			
 			for (int i = 0; i < userCnt; i++) {
-				userList[i] = tmp[i];
+				userList[i] = tmp[i]; // 그 전 배열들 다 넣어주기
 			}
-			tmp = null;
+			tmp = null; 
 		}
 		userList[userCnt].id = id;
 		userList[userCnt].pw = pw;
@@ -128,7 +132,7 @@ public class UserManager {
 		userCnt++;
 		System.out.println("[메세지]회원가입을 축하합니다.");
 		
-		FileManager.getInstance().save();
+		FileManager.getInstance().save(); // 파일에 저장
 
 	}
 
@@ -154,7 +158,7 @@ public class UserManager {
 		FileManager.getInstance().save();
 		
 		return identifier;
-		
+		 
 	}
 	
 	// (테스트생성용 메서드)  : 테스트 데이타 > 더미
