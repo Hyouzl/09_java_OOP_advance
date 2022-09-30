@@ -83,7 +83,7 @@ public class AccountManager {
 				for (int i = 0; i< deleteIdx; i++)  {
 					um.userList[identifier].acc[i] = temp[i];
 				}
-				for (int i = deleteIdx; i < accCntByUser; i++) {
+				for (int i = deleteIdx; i < accCntByUser - 1; i++) {
 					um.userList[identifier].acc[i] = temp[i + 1];
 				}
 				
