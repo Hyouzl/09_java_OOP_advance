@@ -2,6 +2,15 @@ package step9_03.atm_v3;
 
 public class UserManager {
 	
+	// 회원 관리 
+	// 모든 회원의 정보 출력
+	// 중복 아이디 체크
+	// 회원가입
+	// 회원탈퇴
+	// 회원 로그인
+	// 회원 로그아웃
+	// 로그인한 회원의 계좌 메뉴
+	
 	private UserManager () {}
 	private static UserManager instance = new UserManager();
 	public static UserManager getInstance() {
@@ -13,7 +22,7 @@ public class UserManager {
 	int identifier = -1;
 	
 	
-	void printAllUserInfo() {
+	void printAllUserInfo() { 
 		
 		System.out.println("아이디\t패스워드\t계좌정보");
 		for (int i = 0; i < userCount; i++) {
@@ -30,7 +39,7 @@ public class UserManager {
 		userList = new User[userCount];
 		for (int i = 0; i < userCount; i++) {
 			userList[i] = new User();
-		}
+		} // 유저 객체 생성
 				
 		String[] a = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"};
 		String[] b = {"l", "b", "c", "m", "e", "f", "g", "n", "i", "p", "k"};
@@ -108,7 +117,7 @@ public class UserManager {
 				userList[i] = temp[i];
 			}
 			
-			userList[userCount] = new User(id, password);
+			userList[userCount] = new User(id, password); // 매개변수를 받는  생성자
 			
 			temp = null;
 		}

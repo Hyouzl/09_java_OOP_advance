@@ -2,6 +2,12 @@ package step9_03.atm_v3;
 
 
 public class AccountManager {
+	
+	//계좌 관리자
+	// 계좌 생성
+	// 계좌 조회
+	// 계좌 이체
+	// 계좌 
 
 	private AccountManager() {}
 	private static AccountManager instance = new AccountManager();
